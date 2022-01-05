@@ -2,10 +2,7 @@ import { useState, useEffect } from 'react'
 import { fetchPosts } from './api/index'
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
-import Header from './components/Header'
-import Posts from './components/Posts'
-import Login from './components/Login'
-import Home from './components/Home'
+import { Header, Home, Login, Posts, Profile } from './components/index'
 // import { updatePosts } from './api/index'
 
 function App() {
@@ -23,6 +20,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home userAuthToken={userAuthToken} />} />
           <Route path='posts' element={<Posts posts={posts} />} />
+          <Route path='profile' element={<Profile />} />
           <Route
             path='login'
             element={<Login setUserAuthToken={setUserAuthToken} />}

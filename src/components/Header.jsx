@@ -15,7 +15,9 @@ export default function Header(params) {
           <NavLink to='posts'>
             <li className='nav-items'>Posts</li>
           </NavLink>
-          <li className='nav-items'>Profile</li>
+          <NavLink to='profile'>
+            <li className='nav-items'>Profile</li>
+          </NavLink>
           <NavLink to='login'>
             <li className='nav-items'>Log Out</li>
           </NavLink>
