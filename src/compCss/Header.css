@@ -1,0 +1,37 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: grey;
+  color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.header-title {
+  font-size: 3rem;
+}
+
+.header-left {
+  margin-left: 50px;
+}
+
+.header-right > ul {
+  display: flex;
+  list-style: none;
+  margin-right: 50px;
+}
+
+.nav-items {
+  padding: 20px;
+  font-size: 1.5rem;
+  color: white;
+  font-style: none;
+}
+
+.nav-items:hover {
+  background-color: rgb(71, 71, 71);
+}
+
+.active {
+  color: black;
+  background-color: rgb(195, 195, 195);
+}
