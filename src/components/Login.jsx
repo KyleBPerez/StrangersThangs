@@ -2,24 +2,24 @@ import { useState } from 'react'
 import { registerUser, loginUser } from '../api/index'
 import '../compCss/Login.css'
 
-export default function Login({ setCurrentUser }) {
+export default function Login({ setUserAuthToken }) {
   const [loginUsername, setLoginUsername] = useState('')
   const [loginPassword, setLoginPassword] = useState('')
   const [registerUsername, setRegisterUsername] = useState('')
   const [registerPassword, setRegisterPassword] = useState('')
 
-  const loginHandler = (event) => {
+  const loginHandler = async (event) => {
     event.preventDefault()
-    const userLoggedIn = loginUser(loginUsername, loginPassword)
-    setCurrentUser(userLoggedIn)
+    const userToken = await loginUser(loginUsername, loginPassword)
+    setUserAuthToken(userToken)
     setLoginPassword('')
     setLoginUsername('')
   }
 
-  const registerHandler = (event) => {
+  const registerHandler = async (event) => {
     event.preventDefault()
-    const userLoggedIn = registerUser(registerUsername, registerPassword)
-    setCurrentUser(userLoggedIn)
+    const userToken = await registerUser(registerUsername, registerPassword)
+    setUserAuthToken(userToken)
     setRegisterPassword('')
     setRegisterUsername('')
   }

@@ -10,7 +10,7 @@ import Home from './components/Home'
 
 function App() {
   const [posts, setPosts] = useState([])
-  const [currentUser, setCurrentUser] = useState([])
+  const [userAuthToken, setUserAuthToken] = useState([])
 
   useEffect(() => {
     fetchPosts().then((data) => setPosts(data))
@@ -21,11 +21,11 @@ function App() {
       <Header />
       <div className='content-container'>
         <Routes>
-          <Route path='/' element={<Home currentUser={currentUser} />} />
+          <Route path='/' element={<Home userAuthToken={userAuthToken} />} />
           <Route path='posts' element={<Posts posts={posts} />} />
           <Route
             path='login'
-            element={<Login setCurrentUser={setCurrentUser} />}
+            element={<Login setUserAuthToken={setUserAuthToken} />}
           />
         </Routes>
       </div>

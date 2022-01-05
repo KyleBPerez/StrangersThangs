@@ -11,7 +11,8 @@ export const fetchPosts = async () => {
   }
 }
 
-export const updatePosts = async ({
+export const createNewPost = async ({
+  authToken,
   title,
   description,
   price,
@@ -21,6 +22,7 @@ export const updatePosts = async ({
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`,
     },
     body: JSON.stringify({
       post: {
@@ -32,7 +34,7 @@ export const updatePosts = async ({
     }),
   })
   const result = response.json()
-  console.log(result)
+  console.log('createNewPost:', result)
 }
 
 export const deletePost = async (params) => {
@@ -42,7 +44,8 @@ export const deletePost = async (params) => {
       'Content-Type': 'application/json',
     },
   })
-  console.log(response)
+  const result = await response.json()
+  console.log('deletePost:', result)
 }
 
 export const registerUser = async (username, password) => {
@@ -59,7 +62,7 @@ export const registerUser = async (username, password) => {
     }),
   })
   const result = await response.json()
-  console.log(result)
+  console.log('registerUser:', result)
 }
 
 export const loginUser = async (username, password) => {
@@ -76,17 +79,17 @@ export const loginUser = async (username, password) => {
     }),
   })
   const result = await response.json()
-  console.log(result)
-  return result.data.token
+  console.log('loginUser result:', result)
+  return result.data
 }
 
 export const testMe = async (authToken) => {
-  const response = await fetch(`${URL}/test/me`, {
+  const response = await fetch(`${URL}/users/me`, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${authToken}`,
     },
   })
   const result = await response.json()
-  console.log(result)
+  console.log('testMe result:', result)
 }
