@@ -1,11 +1,12 @@
 export default function Posts({ posts }) {
   return (
     <div className='post-card'>
-      {posts &&
+      {posts.length > 0 &&
         posts.map((post) => {
           return (
             <div className='post' key={post._id}>
-              {post.title}
+              <h1>{post.title}</h1>
+              <p>{post.description}</p>
             </div>
           )
         })}

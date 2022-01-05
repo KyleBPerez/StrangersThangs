@@ -1,0 +1,31 @@
+.login-card {
+  margin: 20px 0;
+  padding: 10px 0;
+  padding-right: 10px;
+  border-right: 1px solid black;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form > input {
+  margin: 5px;
+}
+
+.register-card {
+  margin: 20px 0;
+  padding: 10px 0;
+  padding-left: 10px;
+  border-left: 1px solid black;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-form > input {
+  margin: 5px;
+}
