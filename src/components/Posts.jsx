@@ -1,6 +1,14 @@
+import { useState, useEffect } from 'react'
+import { fetchPosts } from '../api'
 import '../compCss/Posts.css'
 
-export default function Posts({ posts }) {
+export default function Posts() {
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    fetchPosts().then((data) => setPosts(data))
+  }, [])
+
   return (
     <div className='posts'>
       {posts.length > 0 &&

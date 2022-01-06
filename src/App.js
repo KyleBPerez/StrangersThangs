@@ -1,17 +1,23 @@
 import { useState, useEffect } from 'react'
-import { fetchPosts } from './api/index'
+import { fetchUserInfo } from './api/index'
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import { Header, Home, Login, Posts, Profile } from './components/index'
 // import { updatePosts } from './api/index'
 
 function App() {
-  const [posts, setPosts] = useState([])
-  const [userAuthToken, setUserAuthToken] = useState([])
-
+  const [userAuthToken, setUserAuthToken] = useState('')
+  const [userInfo, setUserInfo] = useState({})
+  console.log(userInfo, userAuthToken)
+  const handleUser = async (token) => {
+    if (token) {
+      const user = await fetchUserInfo(token)
+      setUserInfo(user)
+    }
+  }
   useEffect(() => {
-    fetchPosts().then((data) => setPosts(data))
-  }, [])
+    handleUser(userAuthToken)
+  }, [userAuthToken])
 
   return (
     <div className='App'>
@@ -19,8 +25,17 @@ function App() {
       <div className='content-container'>
         <Routes>
           <Route path='/' element={<Home userAuthToken={userAuthToken} />} />
-          <Route path='posts' element={<Posts posts={posts} />} />
-          <Route path='profile' element={<Profile />} />
+          <Route path='posts' element={<Posts />} />
+          <Route
+            path='profile'
+            element={
+              <Profile
+                userInfo={userInfo}
+                userAuthToken={userAuthToken}
+                setUserAuthToken={setUserAuthToken}
+              />
+            }
+          />
           <Route
             path='login'
             element={<Login setUserAuthToken={setUserAuthToken} />}

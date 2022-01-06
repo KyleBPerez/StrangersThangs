@@ -80,10 +80,10 @@ export const loginUser = async (username, password) => {
   })
   const result = await response.json()
   console.log('loginUser result:', result)
-  return result.data
+  return result.data.token
 }
 
-export const testMe = async (authToken) => {
+export const fetchUserInfo = async (authToken) => {
   const response = await fetch(`${URL}/users/me`, {
     headers: {
       'Content-Type': 'application/json',
@@ -91,5 +91,6 @@ export const testMe = async (authToken) => {
     },
   })
   const result = await response.json()
-  console.log('testMe result:', result)
+  console.log('fetchUserInfo result:', result)
+  return result.data
 }
