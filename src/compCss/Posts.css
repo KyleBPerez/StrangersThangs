@@ -1,25 +1,44 @@
 .posts {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 50px;
 }
 
 .post-card {
   display: flex;
   flex-direction: column;
-  flex-basis: 200px;
-  margin: 20px;
-  padding: 15px;
-  background-color: grey;
-  box-shadow: 2px 2px 5px rgba(0, 110, 255, 0.726);
+  flex-basis: 250px;
+  padding: 20px;
+  background-color: #222831;
+  box-shadow: 2px 2px 5px #00adb5;
 }
 
 .post-title {
   font-size: 1.3rem;
   margin-bottom: 20px;
-  color: white;
+  color: #eee;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+.post-price {
+  margin-bottom: 15px;
+  color: #00adb5;
+}
+
 .post-description {
-  color: rgb(226, 226, 226);
+  color: #eee;
+  margin-bottom: 15px;
+}
+
+.post-user {
+  color: #00adb5;
+  font-size: 1.2rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.post-by {
+  color: #eee;
 }

@@ -4,6 +4,10 @@
   font-size: 16px;
 }
 
+html {
+  background-color: #393e46;
+}
+
 #root {
   display: flex;
   flex-direction: column;

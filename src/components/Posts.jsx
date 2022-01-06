@@ -16,7 +16,12 @@ export default function Posts() {
           return (
             <div className='post-card' key={post._id}>
               <h1 className='post-title'>{post.title}</h1>
+              <h4 className='post-price'>Price: {post.price}</h4>
               <p className='post-description'>{post.description}</p>
+              <p className='post-by'>
+                Posted by{' '}
+                <span className='post-user'>{post.author.username}</span>
+              </p>
             </div>
           )
         })}

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { loginUser } from '../api/index'
+import '../compCss/Profile.css'
 
 export default function Profile({ userInfo, userAuthToken, setUserAuthToken }) {
   const [loginUsername, setLoginUsername] = useState('')
@@ -13,11 +14,10 @@ export default function Profile({ userInfo, userAuthToken, setUserAuthToken }) {
     setLoginUsername('')
   }
 
-  if (userInfo !== null) {
+  if (Object.keys(userInfo).length > 0) {
     return (
-      <>
-        <h1>{userInfo.username} Profile</h1>
-        <br />
+      <div className='profile-container'>
+        <h1 className='profile-name'>{userInfo.username} Profile</h1>
         <h4>CREATE POST</h4>
         {userInfo.messages &&
           userInfo.messages.map((msg) => {
@@ -28,34 +28,33 @@ export default function Profile({ userInfo, userAuthToken, setUserAuthToken }) {
               </div>
             )
           })}
-      </>
+      </div>
     )
   } else {
     return (
-      <>
-        <h1>Log in To View Your profile</h1>
-        <div className='login-card'>
-          <form
-            className='login-form'
-            action='submit'
-            onSubmit={(e) => loginHandler(e)}
-          >
-            <h2>Log In</h2>
-            <input
-              placeholder='Username'
-              value={loginUsername}
-              onChange={(e) => setLoginUsername(e.target.value)}
-            />
-            <input
-              type='password'
-              placeholder='Password'
-              value={loginPassword}
-              onChange={(e) => setLoginPassword(e.target.value)}
-            />
-            <button>Login</button>
-          </form>
-        </div>
-      </>
+      <div className='login-profile'>
+        <form
+          className='login-form'
+          action='submit'
+          onSubmit={(e) => loginHandler(e)}
+        >
+          <h1 className='login-text'>Log in To View Your profile</h1>
+          <input
+            className='username-input'
+            placeholder='Username'
+            value={loginUsername}
+            onChange={(e) => setLoginUsername(e.target.value)}
+          />
+          <input
+            className='password-input'
+            type='password'
+            placeholder='Password'
+            value={loginPassword}
+            onChange={(e) => setLoginPassword(e.target.value)}
+          />
+          <button className='login-button'>Login</button>
+        </form>
+      </div>
     )
   }
 }
