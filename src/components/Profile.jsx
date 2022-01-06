@@ -17,17 +17,37 @@ export default function Profile({ userInfo, userAuthToken, setUserAuthToken }) {
   if (Object.keys(userInfo).length > 0) {
     return (
       <div className='profile-container'>
-        <h1 className='profile-name'>{userInfo.username} Profile</h1>
-        <h4>CREATE POST</h4>
-        {userInfo.messages &&
-          userInfo.messages.map((msg) => {
-            return (
-              <div>
-                <h1>Message: </h1>
-                <div>{msg}</div>
-              </div>
-            )
-          })}
+        <section className='profile-head'>
+          <h1 className='profile-name'>{userInfo.username}</h1>
+          <section className='profile-head-stats'>
+            <h5>
+              Messages{' | '}
+              <span className='message-count'>{userInfo.messages.length}</span>
+            </h5>
+            <h5>
+              Posts {' | '}
+              <span className='post-count'>{userInfo.posts.length}</span>
+            </h5>
+          </section>
+        </section>
+        <section className='profile-body'>
+          <h2 className='view-messages'>
+            Messages:{' '}
+            {userInfo.messages.length > 0 &&
+              userInfo.messages.map((message, idx) => {
+                return <h1 key={idx}>This is where the messages go</h1>
+              })}
+          </h2>
+          <br />
+          <hr />
+          <h2 className='user-posts'>
+            Posts:{' '}
+            {userInfo.posts.length > 0 &&
+              userInfo.posts.map((post, idx) => {
+                return <h1 key={idx}>This is where the posts go</h1>
+              })}
+          </h2>
+        </section>
       </div>
     )
   } else {
