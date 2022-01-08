@@ -2,13 +2,20 @@ import { useState, useEffect } from 'react'
 import { fetchUserInfo } from './api/index'
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
-import { Header, Home, Login, Posts, Profile } from './components/index'
+import {
+  Header,
+  Home,
+  Login,
+  Posts,
+  Profile,
+  CreatePost,
+} from './components/index'
 // import { updatePosts } from './api/index'
 
 function App() {
   const [userAuthToken, setUserAuthToken] = useState('')
   const [userInfo, setUserInfo] = useState({})
-  console.log(userInfo, userAuthToken)
+
   const handleUser = async (token) => {
     if (token) {
       const user = await fetchUserInfo(token)
@@ -39,6 +46,15 @@ function App() {
           <Route
             path='login'
             element={<Login setUserAuthToken={setUserAuthToken} />}
+          />
+          <Route
+            path='profile/:username/create-post'
+            element={
+              <CreatePost
+                userAuthToken={userAuthToken}
+                setUserInfo={setUserInfo}
+              />
+            }
           />
         </Routes>
       </div>

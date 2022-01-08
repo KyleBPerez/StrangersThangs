@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { loginUser } from '../api/index'
 import '../compCss/Profile.css'
 
 export default function Profile({ userInfo, userAuthToken, setUserAuthToken }) {
   const [loginUsername, setLoginUsername] = useState('')
   const [loginPassword, setLoginPassword] = useState('')
+  console.log(userInfo)
 
   const loginHandler = async (event) => {
     event.preventDefault()
@@ -31,22 +33,34 @@ export default function Profile({ userInfo, userAuthToken, setUserAuthToken }) {
           </section>
         </section>
         <section className='profile-body'>
-          <h2 className='view-messages'>
-            Messages:{' '}
-            {userInfo.messages.length > 0 &&
-              userInfo.messages.map((message, idx) => {
-                return <h1 key={idx}>This is where the messages go</h1>
-              })}
-          </h2>
-          <br />
+          <h2 className='view-messages'>Messages:</h2>
+          {userInfo.messages.length > 0 &&
+            userInfo.messages.map((message, idx) => {
+              return <h1 key={idx}>This is where the messages go</h1>
+            })}
           <hr />
-          <h2 className='user-posts'>
-            Posts:{' '}
+          <section className='profile-posts'>
+            <Link to={`${userInfo.username}/create-post`}>
+              <button className='new-post'>Create New Post</button>
+            </Link>
+            <h2 className='user-posts'>Posts:</h2>
             {userInfo.posts.length > 0 &&
               userInfo.posts.map((post, idx) => {
-                return <h1 key={idx}>This is where the posts go</h1>
+                return (
+                  <div key={`${idx}-${post.title}`}>
+                    <div className='post-card'>
+                      <h1 className='post-title'>{post.title}</h1>
+                      <h4 className='post-price'>Price: {post.price}</h4>
+                      <p className='post-description'>{post.description}</p>
+                      <p className='post-by'>
+                        Posted by{' '}
+                        <span className='post-user'>{userInfo.username}</span>
+                      </p>
+                    </div>
+                  </div>
+                )
               })}
-          </h2>
+          </section>
         </section>
       </div>
     )

@@ -46,7 +46,7 @@ export default function Login({ setUserAuthToken }) {
             value={loginPassword}
             onChange={(e) => setLoginPassword(e.target.value)}
           />
-          <button>Login</button>
+          <button className='login-btn'>Login</button>
         </form>
       </div>
       <div className='register-card'>
@@ -55,7 +55,7 @@ export default function Login({ setUserAuthToken }) {
           action='submit'
           onSubmit={(e) => registerHandler(e)}
         >
-          <h2>Sign Up</h2>
+          <h2>Or Sign up </h2>
           <input
             placeholder='Username'
             value={registerUsername}
@@ -67,7 +67,7 @@ export default function Login({ setUserAuthToken }) {
             value={registerPassword}
             onChange={(e) => setRegisterPassword(e.target.value)}
           />
-          <button>Register Account</button>
+          <button className='register-btn'>Register Account</button>
         </form>
       </div>
     </>

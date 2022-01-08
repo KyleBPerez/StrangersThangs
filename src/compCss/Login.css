@@ -1,31 +1,83 @@
+h2 {
+  color: #00adb5;
+  font-size: 1.5rem;
+}
+
 .login-card {
   margin: 20px 0;
-  padding: 10px 0;
+  padding: 10px 0 30px;
   padding-right: 10px;
-  border-right: 1px solid black;
+  border-right: 3px solid #00adb5;
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .login-form > input {
   margin: 5px;
 }
 
+.login-btn {
+  display: inline-block;
+  padding: 0.7em 1.7em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #eee;
+  background-color: #00adb5;
+  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
+    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
+    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+  text-align: center;
+  position: relative;
+}
+
+.login-btn:active {
+  box-shadow: inset 0 0.6em 2em -0.3em rgba(0, 0, 0, 0.15),
+    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+}
+
 .register-card {
   margin: 20px 0;
   padding: 10px 0;
   padding-left: 10px;
-  border-left: 1px solid black;
 }
 
 .register-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .register-form > input {
   margin: 5px;
+}
+
+.register-btn {
+  display: inline-block;
+  padding: 0.7em 1.7em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #eee;
+  background-color: #00adb5;
+  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
+    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
+    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+  text-align: center;
+  position: relative;
+}
+
+.register-btn:active {
+  box-shadow: inset 0 0.6em 2em -0.3em rgba(0, 0, 0, 0.15),
+    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
 }

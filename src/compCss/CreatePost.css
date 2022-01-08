@@ -1,0 +1,12 @@
+.create-post-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.new-post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
