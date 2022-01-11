@@ -26,9 +26,15 @@ function App() {
     handleUser(userAuthToken)
   }, [userAuthToken])
 
+  useEffect(() => {
+    if (localStorage.getItem('userAuthToken')) {
+      setUserAuthToken(localStorage.getItem('token'))
+    }
+  }, [])
+
   return (
     <div className='App'>
-      <Header />
+      <Header userAuthToken={userAuthToken} />
       <div className='content-container'>
         <Routes>
           <Route path='/' element={<Home userAuthToken={userAuthToken} />} />
@@ -38,6 +44,7 @@ function App() {
             element={
               <Profile
                 userInfo={userInfo}
+                setUserInfo={setUserInfo}
                 userAuthToken={userAuthToken}
                 setUserAuthToken={setUserAuthToken}
               />

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { createNewPost, fetchUserInfo } from '../api/index'
 import '../compCss/CreatePost.css'
 
@@ -16,11 +16,13 @@ export default function CreatePost({ userAuthToken, setUserInfo }) {
     willDeliver: willDeliver,
   }
   const { username } = useParams()
+  const navigate = useNavigate()
 
   const submitHandler = async (e) => {
     e.preventDefault()
     await createNewPost(postObj)
     await fetchUserInfo(userAuthToken).then((data) => setUserInfo(data))
+    navigate('/profile')
   }
 
   const priceHandler = (e) => {
@@ -33,7 +35,10 @@ export default function CreatePost({ userAuthToken, setUserInfo }) {
 
   return (
     <div className='create-post-container'>
-      <section>{username} Profile</section>
+      <section className='post-head'>
+        <h1>{username}</h1>
+        <h3>What item would you like to post</h3>
+      </section>
       <section className='new-post'>
         <form action='' className='new-post-form' onSubmit={submitHandler}>
           <input
@@ -63,16 +68,24 @@ export default function CreatePost({ userAuthToken, setUserInfo }) {
               id='false'
               value='No Delivery'
               onChange={(e) => setWillDeliver(false)}
+              className='no-deli-radio'
+              checked
             />
-            <label for='false'>No Delivery</label>
+            <label for='false' className='no-deli'>
+              No Delivery
+            </label>
             <input
               type='radio'
               name='willDeliver'
               id='true'
               value='Will Deliver'
               onChange={(e) => setWillDeliver(true)}
+              className='will-deli-radio
+'
             />
-            <label for='true'>Will Delivery</label>
+            <label for='true' className='will-deli'>
+              Will Deliver
+            </label>
           </aside>
           <button>Submit</button>
         </form>

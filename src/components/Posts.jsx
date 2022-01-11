@@ -18,6 +18,11 @@ export default function Posts() {
               <h1 className='post-title'>{post.title}</h1>
               <h4 className='post-price'>Price: {post.price}</h4>
               <p className='post-description'>{post.description}</p>
+              <p>
+                {post.willDeliver
+                  ? `I'll come to you!`
+                  : `This ain't delivery it's DiGiorno!`}
+              </p>
               <p className='post-by'>
                 Posted by{' '}
                 <span className='post-user'>{post.author.username}</span>

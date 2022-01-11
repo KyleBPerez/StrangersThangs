@@ -10,3 +10,40 @@
   flex-direction: column;
   gap: 10px;
 }
+
+.post-head {
+  text-align: center;
+}
+
+.post-head > h1 {
+  color: #00adb5;
+  font-size: 3rem;
+}
+
+.post-head > h3 {
+  color: #eee;
+  font-size: 1.5rem;
+}
+
+.new-post {
+  background-color: #222831;
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.274),
+    inset 0 0 5px rgba(255, 255, 255, 0.274),
+    inset 0 0 5px rgba(255, 255, 255, 0.274),
+    inset 0 0 5px rgba(255, 255, 255, 0.274);
+}
+
+.delivery-options {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  color: white;
+}
+
+.will-deli-radio:checked ~ .will-deli {
+  color: #00adb5;
+}
+
+.no-deli-radio:checked ~ .no-deli {
+  color: #00adb5;
+}

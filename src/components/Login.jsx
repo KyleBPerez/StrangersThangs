@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { registerUser, loginUser } from '../api/index'
 import '../compCss/Login.css'
 
@@ -7,21 +8,21 @@ export default function Login({ setUserAuthToken }) {
   const [loginPassword, setLoginPassword] = useState('')
   const [registerUsername, setRegisterUsername] = useState('')
   const [registerPassword, setRegisterPassword] = useState('')
+  const navigate = useNavigate()
 
   const loginHandler = async (event) => {
     event.preventDefault()
     const userToken = await loginUser(loginUsername, loginPassword)
     setUserAuthToken(userToken)
-    setLoginPassword('')
-    setLoginUsername('')
+    navigate('/profile')
   }
 
   const registerHandler = async (event) => {
     event.preventDefault()
-    const userToken = await registerUser(registerUsername, registerPassword)
+    await registerUser(registerUsername, registerPassword)
+    const userToken = await loginUser(registerUsername, registerPassword)
     setUserAuthToken(userToken)
-    setRegisterPassword('')
-    setRegisterUsername('')
+    navigate('/profile')
   }
 
   //created login for project u: tastyChips , p: fishyBits

@@ -38,11 +38,12 @@ export const createNewPost = async ({
   console.log('createNewPost:', result)
 }
 
-export const deletePost = async (params) => {
-  const response = await fetch(`${URL}/posts/POST_ID`, {
+export const deletePost = async (userAuthToken, postId) => {
+  const response = await fetch(`${URL}/posts/${postId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${userAuthToken}`,
     },
   })
   const result = await response.json()
@@ -81,6 +82,7 @@ export const loginUser = async (username, password) => {
   })
   const result = await response.json()
   console.log('loginUser result:', result)
+  window.localStorage.setItem('token', result.data.token)
   return result.data.token
 }
 

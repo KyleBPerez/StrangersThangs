@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 
 import '../compCss/Header.css'
-export default function Header(params) {
+export default function Header({ userAuthToken }) {
   return (
     <header className='page-header'>
       <div className='header-left'>
@@ -9,18 +9,21 @@ export default function Header(params) {
       </div>
       <nav className='nav-list header-right'>
         <ul>
-          <NavLink to='/'>
+          <NavLink to='/' style={{ textDecoration: 'none' }}>
             <li className='nav-items'>Home</li>
           </NavLink>
-          <NavLink to='posts'>
+          <NavLink to='posts' style={{ textDecoration: 'none' }}>
             <li className='nav-items'>Posts</li>
           </NavLink>
-          <NavLink to='profile'>
-            <li className='nav-items'>Profile</li>
-          </NavLink>
-          <NavLink to='login'>
-            <li className='nav-items'>Log In</li>
-          </NavLink>
+          {userAuthToken ? (
+            <NavLink to='profile' style={{ textDecoration: 'none' }}>
+              <li className='nav-items'>Profile</li>
+            </NavLink>
+          ) : (
+            <NavLink to='login' style={{ textDecoration: 'none' }}>
+              <li className='nav-items'>Log In</li>
+            </NavLink>
+          )}
         </ul>
       </nav>
     </header>
