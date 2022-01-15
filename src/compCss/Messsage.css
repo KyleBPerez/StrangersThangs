@@ -1,0 +1,15 @@
+.message-container {
+  width: 80%;
+}
+
+.btn:hover {
+  background-color: #00adb5;
+}
+
+.btn:active {
+  background-color: #eee;
+}
+
+.form-control {
+  resize: none;
+}

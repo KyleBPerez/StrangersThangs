@@ -23,6 +23,12 @@ hr {
   text-align: center;
 }
 
+.profile-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .profile-head-stats {
   display: flex;
   justify-content: center;
@@ -35,6 +41,11 @@ hr {
   border-radius: 10px;
   padding: 2px 5px;
   color: #222831;
+}
+
+.profile-post-card {
+  margin: 15px;
+  min-width: 450px;
 }
 
 .post-count {
@@ -62,8 +73,7 @@ hr {
 .new-post-btn {
   margin-top: 20px;
   display: inline-block;
-  padding: 0.7em 1.7em;
-  margin: 0 0.3em 0.3em 0;
+  padding: 0.4em 1.7em;
   border-radius: 0.2em;
   box-sizing: border-box;
   text-decoration: none;
@@ -78,6 +88,58 @@ hr {
   text-align: center;
   position: relative;
 }
+
+.log-out-btn {
+  width: 50%;
+  padding: 0.4em 1.7em;
+  border-radius: 0.2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #eee;
+  background-color: #00adb5;
+  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
+    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
+    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+  text-align: center;
+  position: relative;
+}
+
+.delete-post-btn {
+  width: 50%;
+  padding: 0.4em 1.7em;
+  border-radius: 0.2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #eee;
+  background-color: #00adb5;
+  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
+    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
+    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+  text-align: center;
+  position: relative;
+}
+
+.edit-post-btn {
+  width: 50%;
+  padding: 0.4em 1.7em;
+  border-radius: 0.2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #eee;
+  background-color: #00adb5;
+  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
+    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
+    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+  text-align: center;
+  position: relative;
+}
+
 .user-posts {
   display: flex;
   justify-content: center;
@@ -95,4 +157,23 @@ hr {
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
+}
+
+.user-post-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-post-btns {
+  display: flex;
+  gap: 20px;
+}
+
+.btn {
+  background-color: #00adb5;
+  border: none;
+}
+
+.container {
+  padding: 10px;
 }

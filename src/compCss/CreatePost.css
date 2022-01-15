@@ -47,3 +47,7 @@
 .no-deli-radio:checked ~ .no-deli {
   color: #00adb5;
 }
+
+.edit-post-btn {
+  width: 100%;
+}

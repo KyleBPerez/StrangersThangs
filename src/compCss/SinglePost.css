@@ -1,0 +1,15 @@
+.single-post-card.post-card {
+  margin-top: 100px;
+  min-width: 75%;
+  color: #eee;
+}
+
+.message-btn.posters-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-post-btn.delete-single-btn {
+  width: auto;
+  margin: 0;
+}

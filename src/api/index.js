@@ -1,57 +1,7 @@
 const URL = 'https://strangers-things.herokuapp.com/api/2110-FTB-PT-WEB-PT'
 
-export const fetchPosts = async () => {
-  try {
-    const response = await fetch(`${URL}/posts`)
-    const result = await response.json()
-    if (result.error) throw result.error
-    console.log(result)
-    return result.data.posts
-  } catch (error) {
-    console.error(error, `something went wrong`)
-  }
-}
-
-export const createNewPost = async ({
-  authToken,
-  title,
-  description,
-  price,
-  willDeliver,
-}) => {
-  const response = await fetch(`${URL}/posts`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${authToken}`,
-    },
-    body: JSON.stringify({
-      post: {
-        title: title,
-        description: description,
-        price: price,
-        willDeliver: willDeliver,
-      },
-    }),
-  })
-  const result = response.json()
-  console.log('createNewPost:', result)
-}
-
-export const deletePost = async (userAuthToken, postId) => {
-  const response = await fetch(`${URL}/posts/${postId}`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${userAuthToken}`,
-    },
-  })
-  const result = await response.json()
-  console.log('deletePost:', result)
-}
-
 export const registerUser = async (username, password) => {
-  const response = await fetch(`${URL}/users/register`, {
+  await fetch(`${URL}/users/register`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -63,8 +13,6 @@ export const registerUser = async (username, password) => {
       },
     }),
   })
-  const result = await response.json()
-  console.log('registerUser:', result)
 }
 
 export const loginUser = async (username, password) => {
@@ -81,7 +29,6 @@ export const loginUser = async (username, password) => {
     }),
   })
   const result = await response.json()
-  console.log('loginUser result:', result)
   window.localStorage.setItem('token', result.data.token)
   return result.data.token
 }
@@ -94,6 +41,89 @@ export const fetchUserInfo = async (authToken) => {
     },
   })
   const result = await response.json()
-  console.log('fetchUserInfo result:', result)
   return result.data
+}
+
+export const fetchPosts = async () => {
+  try {
+    const response = await fetch(`${URL}/posts`)
+    const result = await response.json()
+    if (result.error) throw result.error
+    return result.data.posts
+  } catch (error) {
+    console.error(error, `something went wrong`)
+  }
+}
+
+export const createNewPost = async ({
+  authToken,
+  title,
+  location,
+  description,
+  price,
+  willDeliver,
+}) => {
+  await fetch(`${URL}/posts`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`,
+    },
+    body: JSON.stringify({
+      post: {
+        title: title,
+        description: description,
+        location: location ? location : null,
+        price: price ? price : `[On Request]`,
+        willDeliver: willDeliver,
+      },
+    }),
+  })
+}
+
+export const deletePost = async (userAuthToken, postId) => {
+  await fetch(`${URL}/posts/${postId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${userAuthToken}`,
+    },
+  })
+}
+
+export const editPost = async (
+  postId,
+  { authToken, title, location, description, price, willDeliver }
+) => {
+  await fetch(`${URL}/posts/${postId}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`,
+    },
+    body: JSON.stringify({
+      post: {
+        title: title,
+        description: description,
+        price: price,
+        location: location,
+        willDeliver: willDeliver,
+      },
+    }),
+  })
+}
+
+export const messageUser = async ({ postId, authToken, message }) => {
+  await fetch(`${URL}/posts/${postId}/messages`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`,
+    },
+    body: JSON.stringify({
+      message: {
+        content: message,
+      },
+    }),
+  })
 }
