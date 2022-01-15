@@ -22,8 +22,6 @@ function App() {
   const [posts, setPosts] = useState([])
   const [ogPosts, setOgPosts] = useState([])
 
-  console.log(posts)
-
   useEffect(() => {
     fetchPosts().then((data) => {
       setPosts(data)
