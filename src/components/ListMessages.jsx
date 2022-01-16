@@ -25,6 +25,8 @@ export default function ListMessages({ messages, posts }) {
     setMsgSent(sentArray)
   }, [messages, username])
 
+  if (!msgSent) return null
+
   return pathname.includes('sent') ? (
     <Container className='d-flex justify-content-center flex-wrap gap-4 w-100'>
       {msgSent.map((singleMsg, idx) => {

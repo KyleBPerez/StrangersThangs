@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import '../compCss/SinglePost.css'
 import { DeleteBtn } from './DeleteBtn'
-import { Container } from 'react-bootstrap'
 
 export default function SinglePost({
   posts,
@@ -19,6 +18,8 @@ export default function SinglePost({
   useEffect(() => {
     setSinglePost(filterPosts)
   }, [filterPosts])
+
+  if (!singlePost) return null
 
   return singlePost._id ? (
     <div className='post-card single-post-card'>

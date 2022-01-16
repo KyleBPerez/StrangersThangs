@@ -26,6 +26,8 @@
   flex-basis: 450px;
   padding: 20px;
   background-color: #222831;
+  border-radius: 15px;
+  border: 1px solid #eee;
   box-shadow: 2px 2px 5px #00adb5;
 }
 
@@ -73,4 +75,8 @@
 
 .post-location {
   font-size: 1.3rem;
+}
+
+.form-control:focus {
+  box-shadow: none;
 }

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import InputGroup from 'react-bootstrap/InputGroup'
+import FormControl from 'react-bootstrap/FormControl'
 import '../compCss/Posts.css'
 
 export default function Posts({ posts, setPosts, ogPosts }) {
@@ -20,14 +22,24 @@ export default function Posts({ posts, setPosts, ogPosts }) {
   }
 
   return (
-    <div className='posts-container'>
+    <div className='posts-container w-100'>
       <section className='search-bar'>
-        <input
-          type='text'
-          value={searchValue}
-          placeholder='Search Posts...'
-          onChange={(e) => searchUpdate(e.target.value)}
-        ></input>
+        <InputGroup className='input-group-lg mb-3 w-50'>
+          <InputGroup.Text
+            className='bg-info text-dark '
+            id='search-posts-form'
+          >
+            Search Posts:{' '}
+          </InputGroup.Text>
+          <FormControl
+            className='bg-dark text-light'
+            placeholder='User, Item, Keywords. . .'
+            aria-label='Username'
+            aria-describedby='search-posts-form'
+            value={searchValue}
+            onChange={(e) => searchUpdate(e.target.value)}
+          />
+        </InputGroup>
       </section>
       <div className='posts'>
         {posts.length > 0 &&
@@ -38,7 +50,9 @@ export default function Posts({ posts, setPosts, ogPosts }) {
                   to={`${post._id}`}
                   style={{ textDecoration: 'none', color: 'white' }}
                 >
-                  <h1 className='post-title'>{post.title}</h1>
+                  <h1 className='post-title card-header bg-secondary rounded'>
+                    {post.title}
+                  </h1>
                   <h3 className='post-location'>
                     Location:{' '}
                     <span className='post-highlight'>{post.location}</span>

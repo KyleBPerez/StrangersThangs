@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import { messageUser } from '../api/index'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import '../compCss/Messsage.css'
-import { messageUser } from '../api/index'
 
 export default function MessageForm({ userAuthToken }) {
   const [userMessage, setUserMessage] = useState('')
