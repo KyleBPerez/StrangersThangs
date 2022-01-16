@@ -1,9 +1,20 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { createNewPost, fetchUserInfo, editPost } from '../api/index'
+import {
+  createNewPost,
+  fetchUserInfo,
+  editPost,
+  fetchPosts,
+} from '../api/index'
 import '../compCss/CreatePost.css'
 
-export default function CreatePost({ userAuthToken, setUserInfo, userInfo }) {
+export default function CreatePost({
+  userAuthToken,
+  setUserInfo,
+  userInfo,
+  setPosts,
+  setOgPosts,
+}) {
   const [itemName, setItemName] = useState('')
   const [itemValue, setItemValue] = useState('')
   const [itemDescription, setItemDescription] = useState('')
@@ -24,6 +35,10 @@ export default function CreatePost({ userAuthToken, setUserInfo, userInfo }) {
     e.preventDefault()
     await createNewPost(postObj)
     await fetchUserInfo(userAuthToken).then((data) => setUserInfo(data))
+    await fetchPosts().then((postData) => {
+      setPosts(postData)
+      setOgPosts(postData)
+    })
     navigate('/profile')
   }
 
@@ -31,6 +46,10 @@ export default function CreatePost({ userAuthToken, setUserInfo, userInfo }) {
     e.preventDefault()
     await editPost(postId, postObj)
     await fetchUserInfo(userAuthToken).then((data) => setUserInfo(data))
+    await fetchPosts().then((postData) => {
+      setPosts(postData)
+      setOgPosts(postData)
+    })
     navigate('/profile')
   }
 
@@ -113,8 +132,7 @@ export default function CreatePost({ userAuthToken, setUserInfo, userInfo }) {
               id='true'
               value='Will Deliver'
               onChange={(e) => setDelivery(true)}
-              className='will-deli-radio
-'
+              className='will-deli-radio'
             />
             <label htmlFor='true' className='will-deli'>
               Will Deliver

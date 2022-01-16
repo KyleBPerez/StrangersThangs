@@ -6,6 +6,8 @@ import { DeleteBtn } from './DeleteBtn'
 
 export default function SinglePost({
   posts,
+  setPosts,
+  setOgPosts,
   userAuthToken,
   setUserInfo,
   setUsersPosts,
@@ -21,7 +23,7 @@ export default function SinglePost({
 
   if (!singlePost) return null
 
-  return singlePost._id ? (
+  return singlePost.active ? (
     <div className='post-card single-post-card'>
       <h1 className='post-title'>{singlePost.title}</h1>
       <h3 className='post-location'>
@@ -45,6 +47,8 @@ export default function SinglePost({
             userAuthToken={userAuthToken}
             setUserInfo={setUserInfo}
             setUsersPosts={setUsersPosts}
+            setPosts={setPosts}
+            setOgPosts={setOgPosts}
           />
         ) : (
           <Link to={`${username}/message-${singlePost.author.username}`}>

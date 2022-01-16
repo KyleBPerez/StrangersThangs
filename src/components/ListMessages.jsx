@@ -15,11 +15,13 @@ export default function ListMessages({ messages, posts }) {
     const sentArray = []
     const recievedArray = []
 
-    messages.forEach((msgData) =>
-      msgData.fromUser.username !== username
-        ? recievedArray.push(msgData)
-        : sentArray.push(msgData)
-    )
+    if (messages) {
+      messages.forEach((msgData) =>
+        msgData.fromUser.username !== username
+          ? recievedArray.push(msgData)
+          : sentArray.push(msgData)
+      )
+    }
 
     setMsgRecived(recievedArray)
     setMsgSent(sentArray)

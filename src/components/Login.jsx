@@ -14,7 +14,7 @@ export default function Login({ setUserAuthToken }) {
     event.preventDefault()
     const userToken = await loginUser(loginUsername, loginPassword)
     setUserAuthToken(userToken)
-    navigate('/profile')
+    navigate('/')
   }
 
   const registerHandler = async (event) => {

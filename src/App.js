@@ -22,10 +22,12 @@ function App() {
   const [posts, setPosts] = useState([])
   const [ogPosts, setOgPosts] = useState([])
 
+  console.log(`posts`, posts)
+
   useEffect(() => {
-    fetchPosts().then((data) => {
-      setPosts(data)
-      setOgPosts(data)
+    fetchPosts().then((postData) => {
+      setOgPosts(postData)
+      setPosts(postData)
     })
   }, [])
 
@@ -51,11 +53,24 @@ function App() {
       <Header userAuthToken={userAuthToken} />
       <div className='content-container'>
         <Routes>
-          <Route path='/' element={<Home userAuthToken={userAuthToken} />} />
+          <Route
+            path='/'
+            element={
+              <Home
+                userAuthToken={userAuthToken}
+                username={userInfo.username}
+              />
+            }
+          />
           <Route
             path='posts'
             element={
-              <Posts posts={posts} setPosts={setPosts} ogPosts={ogPosts} />
+              <Posts
+                posts={posts}
+                ogPosts={ogPosts}
+                setPosts={setPosts}
+                setOgPosts={setOgPosts}
+              />
             }
           />
           <Route
@@ -63,6 +78,8 @@ function App() {
             element={
               <SinglePost
                 posts={posts}
+                setPosts={setPosts}
+                setOgPosts={setOgPosts}
                 userInfo={userInfo}
                 setUserInfo={setUserInfo}
                 userAuthToken={userAuthToken}
@@ -78,6 +95,7 @@ function App() {
             path='profile'
             element={
               <Profile
+                setPosts={setPosts}
                 userInfo={userInfo}
                 setUserInfo={setUserInfo}
                 userAuthToken={userAuthToken}
@@ -107,6 +125,8 @@ function App() {
             path='profile/:username/create-post'
             element={
               <CreatePost
+                setPosts={setPosts}
+                setOgPosts={setOgPosts}
                 userAuthToken={userAuthToken}
                 setUserInfo={setUserInfo}
               />
@@ -116,6 +136,8 @@ function App() {
             path='profile/:username/edit-post/:postId'
             element={
               <CreatePost
+                setPosts={setPosts}
+                setOgPosts={setOgPosts}
                 userAuthToken={userAuthToken}
                 setUserInfo={setUserInfo}
                 userInfo={userInfo}

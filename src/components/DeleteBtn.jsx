@@ -1,20 +1,28 @@
 import { Button } from 'react-bootstrap'
-import { fetchUserInfo, deletePost } from '../api/index'
+import { useNavigate } from 'react-router-dom'
+import { fetchUserInfo, deletePost, fetchPosts } from '../api/index'
 
 export const DeleteBtn = ({
   userAuthToken,
   setUserInfo,
-  setUsersPosts,
   posts,
   post,
+  setPosts,
+  setOgPosts,
+  setUserPosts,
   className,
 }) => {
+  const navigate = useNavigate()
   const deletePostHandler = async (postId) => {
     await deletePost(userAuthToken, postId)
-    const updateUserInfo = await fetchUserInfo(userAuthToken)
-    setUserInfo(updateUserInfo)
-    const newPosts = posts.filter((post) => post.active === true)
-    setUsersPosts(newPosts)
+    await fetchUserInfo(userAuthToken).then((updateUserInfo) =>
+      setUserInfo(updateUserInfo)
+    )
+    await fetchPosts().then((postData) => {
+      setPosts(postData)
+      setOgPosts(postData)
+    })
+    if (className) navigate('/posts')
   }
 
   return (
