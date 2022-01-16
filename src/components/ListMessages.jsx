@@ -14,18 +14,16 @@ export default function ListMessages({ messages, posts }) {
   useEffect(() => {
     const sentArray = []
     const recievedArray = []
-    messages.forEach((msgData) => {
-      if (msgData.fromUser.username !== username) {
-        recievedArray.push(msgData)
-      } else {
-        sentArray.push(msgData)
-      }
-    })
+
+    messages.forEach((msgData) =>
+      msgData.fromUser.username !== username
+        ? recievedArray.push(msgData)
+        : sentArray.push(msgData)
+    )
+
     setMsgRecived(recievedArray)
     setMsgSent(sentArray)
   }, [messages, username])
-
-  if (!msgSent) return null
 
   return pathname.includes('sent') ? (
     <Container className='d-flex justify-content-center flex-wrap gap-4 w-100'>

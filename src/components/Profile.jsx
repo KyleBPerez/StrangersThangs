@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
-import { /* deletePost, */ fetchUserInfo } from '../api/index'
+import { fetchUserInfo } from '../api/index'
 import { DeleteBtn } from './DeleteBtn'
 import '../compCss/Profile.css'
 
@@ -103,7 +103,6 @@ export default function Profile({
                             post={post}
                             userAuthToken={userAuthToken}
                             setUserInfo={setUserInfo}
-                            setUsersPosts={setUsersPosts}
                           />
                           <Link to={`${username}/edit-post/${post._id}`}>
                             <button className='edit-post-btn'>Edit</button>
