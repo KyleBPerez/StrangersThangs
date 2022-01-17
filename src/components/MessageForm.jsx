@@ -7,17 +7,13 @@ import '../compCss/Messsage.css'
 
 export default function MessageForm({ userAuthToken }) {
   const [userMessage, setUserMessage] = useState('')
-  const { postId, username, postersUsername } = useParams()
+  const { postId, postersUsername } = useParams()
   const navigate = useNavigate()
   const messageObj = {
     postId: postId,
     authToken: userAuthToken,
     message: userMessage,
   }
-
-  console.log(
-    `postId: ${postId}, LoggedInUsername: ${username}, postersUsernamee: ${postersUsername}`
-  )
 
   const submitMessage = async () => {
     await messageUser(messageObj)
@@ -39,12 +35,11 @@ export default function MessageForm({ userAuthToken }) {
             <Form.Control
               className='p-2 bg-dark text-white'
               as='textarea'
-              rows={10}
+              rows={5}
               onChange={(e) => setUserMessage(e.target.value)}
             />
           </Form.Group>
           <Button
-            variant='info'
             size='sm'
             className='message-submit-btn rounded-3'
             onClick={submitMessage}

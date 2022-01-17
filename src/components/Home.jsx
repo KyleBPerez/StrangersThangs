@@ -4,14 +4,14 @@ import { Container, InputGroup, Button } from 'react-bootstrap'
 export default function Home({ userAuthToken, username }) {
   const navigate = useNavigate()
   return (
-    <Container className='d-flex flex-column w-100 align-items-center bg-dark rounded-pill mt-5 gap-2 border border-light shadow-lg'>
+    <Container className='d-flex p-sm-5 flex-column w-100 align-items-center bg-dark rounded-pill mt-5 gap-2 border border-light shadow-lg'>
       {!userAuthToken ? (
         <h1 className='display-4 text-light text-center p-5'>
           Welcome to Strager's Things
         </h1>
       ) : (
         <h1 className='display-4 text-light text-center p-5'>
-          Welcome Back <span className='display-4 text-info'>{username}</span>{' '}
+          Welcome Back <span className='display-4 text-info '>{username}</span>{' '}
           to Stranger's Things
         </h1>
       )}
@@ -24,7 +24,7 @@ export default function Home({ userAuthToken, username }) {
       <Container className='d-flex flex-column gap-3 p-5 w-75'>
         <InputGroup className='mb-3'>
           <InputGroup.Text
-            className='bg-secondary text-dark w-50 d-flex justify-content-center text-wrap'
+            className='bg-secondary text-light w-50 d-flex justify-content-center text-wrap'
             id='search-posts-form'
           >
             {!userAuthToken
@@ -32,9 +32,8 @@ export default function Home({ userAuthToken, username }) {
               : ` Go Check Your messages!!! `}
           </InputGroup.Text>
           <Button
-            variant='outline-secondary'
             id='button-addon2'
-            className='w-50 text-light'
+            className='w-50'
             onClick={() =>
               userAuthToken ? navigate('./profile') : navigate('./login')
             }
@@ -46,15 +45,14 @@ export default function Home({ userAuthToken, username }) {
         </InputGroup>
         <InputGroup className='mb-3'>
           <Button
-            variant='outline-secondary'
             id='button-addon2'
-            className='w-50 text-light'
+            className='w-50 '
             onClick={() => navigate('./posts')}
           >
             Head over to and Check out
           </Button>
           <InputGroup.Text
-            className='bg-secondary text-dark w-50 d-flex justify-content-center'
+            className='bg-secondary text-light w-50 d-flex justify-content-center text-wrap'
             id='search-posts-form'
           >
             All the goods we have

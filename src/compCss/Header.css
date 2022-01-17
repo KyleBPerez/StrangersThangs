@@ -36,3 +36,9 @@
   color: black;
   background-color: #00adb5;
 }
+
+@media screen and (max-width: 768px) {
+  .nav-list {
+    width: 100%;
+  }
+}

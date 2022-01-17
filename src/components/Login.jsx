@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { registerUser, loginUser } from '../api/index'
+import Button from 'react-bootstrap/Button'
 import '../compCss/Login.css'
 
 export default function Login({ setUserAuthToken }) {
@@ -47,7 +48,9 @@ export default function Login({ setUserAuthToken }) {
             value={loginPassword}
             onChange={(e) => setLoginPassword(e.target.value)}
           />
-          <button className='login-btn'>Login</button>
+          <Button className='login-btn mt-3' type='submit'>
+            Login
+          </Button>
         </form>
       </div>
       <div className='register-card'>
@@ -68,7 +71,9 @@ export default function Login({ setUserAuthToken }) {
             value={registerPassword}
             onChange={(e) => setRegisterPassword(e.target.value)}
           />
-          <button className='register-btn'>Register Account</button>
+          <Button className='register-btn mt-3' type='submit'>
+            Register Account
+          </Button>
         </form>
       </div>
     </>

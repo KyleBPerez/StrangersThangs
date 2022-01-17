@@ -1,6 +1,6 @@
-.single-post-card.post-card {
+.single-post-container {
   margin-top: 100px;
-  min-width: 75%;
+  min-width: 50%;
   color: #eee;
 }
 
@@ -12,4 +12,9 @@
 .delete-post-btn.delete-single-btn {
   width: auto;
   margin: 0;
+}
+
+#single-post-title {
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
 }

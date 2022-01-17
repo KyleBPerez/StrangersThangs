@@ -2,11 +2,11 @@ hr {
   width: 70%;
 }
 
-.login-profile {
-  margin: 20px;
-  padding: 25px;
-  border: 2px solid black;
+h5 {
+  margin: 0;
 }
+
+/********************** general Divs / layout stuff ******************/
 
 .profile-container {
   display: flex;
@@ -18,15 +18,10 @@ hr {
 }
 
 .profile-name {
+  color: #00adb5;
   font-size: 3rem;
   margin: 20px;
   text-align: center;
-}
-
-.profile-head {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .profile-head-stats {
@@ -36,23 +31,10 @@ hr {
   gap: 30px;
   padding: 15px;
 }
-.message-count {
-  background-color: #00adb5;
-  border-radius: 10px;
-  padding: 2px 5px;
-  color: #222831;
-}
 
-.profile-post-card {
-  margin: 15px;
-  min-width: 450px;
-}
-
-.post-count {
+.msg-post-count {
   background-color: #00adb5;
-  border-radius: 10px;
-  padding: 2px 5px;
-  color: #222831;
+  color: #eee;
 }
 
 .profile-body {
@@ -62,87 +44,11 @@ hr {
   align-items: center;
 }
 
-.profile-body {
-  margin: 15px;
-}
-
-.view-messages {
-  margin: 20px;
-}
-
-.new-post-btn {
-  margin-top: 20px;
-  display: inline-block;
-  padding: 0.4em 1.7em;
-  border-radius: 0.2em;
-  box-sizing: border-box;
-  text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  color: #eee;
-  margin-top: 30px;
-  background-color: #00adb5;
-  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
-    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
-    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
-  text-align: center;
-  position: relative;
-}
-
-.log-out-btn {
-  width: 50%;
-  padding: 0.4em 1.7em;
-  border-radius: 0.2em;
-  box-sizing: border-box;
-  text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  color: #eee;
-  background-color: #00adb5;
-  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
-    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
-    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
-  text-align: center;
-  position: relative;
-}
-
-.delete-post-btn {
-  width: 50%;
-  padding: 0.4em 1.7em;
-  border-radius: 0.2em;
-  box-sizing: border-box;
-  text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  color: #eee;
-  background-color: #00adb5;
-  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
-    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
-    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
-  text-align: center;
-  position: relative;
-}
-
-.edit-post-btn {
-  width: 50%;
-  padding: 0.4em 1.7em;
-  border-radius: 0.2em;
-  box-sizing: border-box;
-  text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  color: #eee;
-  background-color: #00adb5;
-  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
-    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
-    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
-  text-align: center;
-  position: relative;
-}
-
-.user-posts {
+.user-posts-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 30px;
 }
 
 .profile-posts {
@@ -152,28 +58,83 @@ hr {
   gap: 10px;
 }
 
-.user-posts-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.user-post-info {
-  display: flex;
-  flex-direction: column;
-}
-
 .user-post-btns {
   display: flex;
   gap: 20px;
 }
 
+/******************************** Post Card ***************************/
+
+#profile-post-title {
+  font-size: 2rem;
+  text-align: center;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+}
+
+#profile-card-body {
+  align-items: center;
+}
+
+#profile-card-body h3 {
+  font-size: 1.75rem;
+  font-style: italic;
+}
+
+.profile-highlight {
+  font-size: 2rem;
+}
+
+/******************************** buttons ***************************/
+
 .btn {
   background-color: #00adb5;
+  font-weight: 600;
   border: none;
 }
 
-.container {
-  padding: 10px;
+.btn:hover {
+  background-color: #00ffff;
+  color: #393e46;
+}
+
+.btn:focus {
+  background-color: #393e46;
+  color: #eee;
+  box-shadow: none;
+}
+
+.new-post-btn {
+  padding: 0.4em 1.7em;
+  border-radius: 0.2em;
+  font-family: 'Roboto', sans-serif;
+  color: #eee;
+  background-color: #00adb5;
+}
+
+.log-out-btn {
+  width: 50%;
+  padding: 0.4em 1.7em;
+  border-radius: 0.2em;
+  font-family: 'Roboto', sans-serif;
+  color: #eee;
+  background-color: #00adb5;
+}
+
+.delete-post-btn {
+  width: 50%;
+  padding: 0.4em 1.7em;
+  border-radius: 0.2em;
+  font-family: 'Roboto', sans-serif;
+  color: #eee;
+  background-color: #00adb5;
+}
+
+.edit-post-btn {
+  width: 50%;
+  padding: 0.4em 1.7em;
+  border-radius: 0.2em;
+  font-family: 'Roboto', sans-serif;
+  color: #eee;
+  background-color: #00adb5;
 }

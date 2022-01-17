@@ -39,8 +39,8 @@ export default function ListMessages({ messages, posts }) {
             <CardHeader className='bg-dark text-light'>
               <Card.Title>{singleMsg.post.title}</Card.Title>
               {posts.map((post, idx) => {
-                if (post._id === singleMsg.post._id) {
-                  return (
+                return (
+                  post._id === singleMsg.post._id && (
                     <Card.Text key={idx} className='text-secondary'>
                       Posted By:{' '}
                       <span className='post-highlight'>
@@ -48,7 +48,7 @@ export default function ListMessages({ messages, posts }) {
                       </span>
                     </Card.Text>
                   )
-                }
+                )
               })}
             </CardHeader>
             <CardGroup className='p-4 bg-secondary text-light'>

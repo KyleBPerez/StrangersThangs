@@ -6,6 +6,8 @@ import {
   InputGroup,
   Container,
   Button,
+  ToggleButtonGroup,
+  ToggleButton,
 } from 'react-bootstrap'
 import {
   createNewPost,
@@ -37,8 +39,6 @@ export default function CreatePost({
     price: itemValue,
     willDeliver: delivery,
   }
-
-  console.log(delivery)
 
   const newPostHandler = async (e) => {
     e.preventDefault()
@@ -72,130 +72,115 @@ export default function CreatePost({
 
   useEffect(() => {
     if (postId) {
-      for (let i = 0; i < userInfo.posts.length; i++) {
-        if (userInfo.posts[i]._id === postId) {
-          setDelivery(userInfo.posts[i].willDeliver)
-          setItemName(userInfo.posts[i].title)
-          setItemValue(userInfo.posts[i].price)
-          setItemLocation(userInfo.posts[i].location)
-          setItemDescription(userInfo.posts[i].description)
+      userInfo.posts.forEach((userPosts) => {
+        if (userPosts._id === postId) {
+          setDelivery(userPosts.willDeliver)
+          setItemName(userPosts.title)
+          setItemValue(userPosts.price)
+          setItemLocation(userPosts.location)
+          setItemDescription(userPosts.description)
         }
-      }
+      })
     }
   }, [userInfo, postId])
 
   return (
     <div className='create-post-container w-100'>
-      <section className='post-head'>
+      <section className='post-head text-center'>
         <h1>{username}</h1>
         <h3>What item would you like to post?</h3>
       </section>
       <Container className='d-flex justify-content-center w-100'>
-        <Form className='w-50'>
+        <Form
+          className='w-50 p-3 bg-dark rounded'
+          onSubmit={
+            postId ? (e) => editPostHandler(e) : (e) => newPostHandler(e)
+          }
+        >
           <InputGroup className='mb-2'>
-            <InputGroup.Text>Item Name: </InputGroup.Text>
-            <FormControl placeholder='What kind of item you selling . . .' />
+            <InputGroup.Text className='input-description'>
+              Item Name:{' '}
+            </InputGroup.Text>
+            <FormControl
+              value={itemName}
+              placeholder='What kind of item you selling . . .'
+              onChange={(e) => setItemName(e.target.value)}
+            />
           </InputGroup>
           <InputGroup className='mb-2 '>
-            <InputGroup.Text>Location: </InputGroup.Text>
-            <FormControl placeholder='State, Address, Parking Lot. . .' />
-            <InputGroup.Text className='ms-2'>Price: </InputGroup.Text>
-            <FormControl placeholder='State, Address, Random Grocery store. . .' />
+            <InputGroup.Text className='input-description'>
+              Location:{' '}
+            </InputGroup.Text>
+            <FormControl
+              id='control-location'
+              value={
+                !itemLocation ? setItemLocation(`[On Request]`) : itemLocation
+              }
+              onChange={(e) => setItemLocation(e.target.value)}
+            />
+            <InputGroup.Text
+              id='input-price'
+              className='input-description  ms-2'
+            >
+              Price:{' '}
+            </InputGroup.Text>
+            <FormControl
+              value={itemValue}
+              placeholder='. . .'
+              onChange={(e) => priceHandler(e.target.value)}
+            />
           </InputGroup>
           <InputGroup className='mb-2'>
-            <InputGroup.Text>Description: </InputGroup.Text>
+            <InputGroup.Text className='input-description'>
+              Description:{' '}
+            </InputGroup.Text>
             <FormControl
+              value={itemDescription}
               as='textarea'
               placeholder='State, Address, Random Grocery store. . .'
+              onChange={(e) => setItemDescription(e.target.value)}
             />
           </InputGroup>
-          <InputGroup className='d-flex justify-content-center mb-3'>
-            <InputGroup.Radio
-              type='radio'
-              name='willDeliver'
-              id='true'
-              value='Will Delivery'
+          <ToggleButtonGroup
+            name='delivery'
+            value={delivery}
+            type='radio'
+            className='d-flex justify-content-center mb-3'
+          >
+            <ToggleButton
+              id='will-deliver'
+              className='will-deliver'
+              data-toggle='button'
+              value={true}
               onChange={(e) => setDelivery(true)}
               aria-label='Radio button for will Deliver'
-            />
-            <InputGroup.Text htmlFor='true'>Will Deliver</InputGroup.Text>
-            <InputGroup.Radio
-              type='radio'
-              name='willDeliver'
-              id='false'
-              value='No Delivery'
+            >
+              Will Deliver
+            </ToggleButton>
+            <ToggleButton
+              id='no-delivery'
+              className='will-deliver'
+              data-toggle='button'
+              value={false}
               onChange={(e) => setDelivery(false)}
               aria-label='Radio button for will Deliver'
-            />
-            <InputGroup.Text htmlFor='false'>No Delivery</InputGroup.Text>
-          </InputGroup>
+            >
+              No Delivery
+            </ToggleButton>
+          </ToggleButtonGroup>
           <InputGroup className='d-flex gap-3 justify-content-center '>
-            <Button className='w-25 rounded'>Submit</Button>
-            <Button className='w-25 bg-danger rounded'>Cancel</Button>
+            <Button className='w-25 rounded' type='submit'>
+              Submit
+            </Button>
+            <Button
+              className='w-25 bg-danger rounded'
+              onClick={() => navigate('/profile')}
+            >
+              Cancel
+            </Button>
           </InputGroup>
         </Form>
       </Container>
-
-      {/* <section className='new-post'>
-        <form
-          action=''
-          className='new-post-form'
-          onSubmit={postId ? editPostHandler : newPostHandler}
-        >
-          <input
-            type='text'
-            value={itemName}
-            onChange={(e) => setItemName(e.target.value)}
-            placeholder='Item Name...'
-          />
-          <input
-            type='text'
-            value={itemLocation}
-            onChange={(e) => setItemLocation(e.target.value)}
-            placeholder='Location...'
-          />
-          <input
-            type='text'
-            value={itemValue}
-            onChange={(e) => priceHandler(e.target.value)}
-            placeholder='Item Price...'
-          />
-          <textarea
-            style={{ resize: 'none' }}
-            value={itemDescription}
-            onChange={(e) => setItemDescription(e.target.value)}
-            placeholder='Enter Item Description . . .'
-            rows={10}
-            cols={50}
-          />
-          <aside className='delivery-options'>
-            <input
-              type='radio'
-              name='willDeliver'
-              id='false'
-              value='No Delivery'
-              onChange={(e) => setDelivery(false)}
-              className='no-deli-radio'
-              checked
-            />
-            <label htmlFor='false' className='no-deli'>
-              No Delivery
-            </label>
-            <input
-              type='radio'
-              name='willDeliver'
-              id='true'
-              value='Will Deliver'
-              onChange={(e) => setDelivery(true)}
-              className='will-deli-radio'
-            />
-            <label htmlFor='true' className='will-deli'>
-              Will Deliver
-            </label>
-          </aside>
-          <button>Submit</button>
-        </form>
-      </section> */}
     </div>
   )
 }

@@ -27,7 +27,6 @@ export const DeleteBtn = ({
 
   return (
     <Button
-      variant='info'
       className={`${className ? className : ''} delete-post-btn w-10`}
       onClick={() => deletePostHandler(post._id)}
     >

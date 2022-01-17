@@ -8,3 +8,11 @@
   flex-wrap: wrap;
   background-color: #393e46;
 }
+
+.loading-btn {
+  box-shadow: 0 1rem 3rem rgba(238, 238, 238, 0.175);
+}
+
+#search-posts-form {
+  background-color: #00adb5;
+}

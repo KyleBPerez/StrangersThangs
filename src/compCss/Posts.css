@@ -6,8 +6,6 @@
 
 .search-bar {
   display: flex;
-  justify-content: center;
-  margin-top: 40px;
 }
 
 .posts {
@@ -24,11 +22,16 @@
   flex-direction: column;
   justify-content: space-between;
   flex-basis: 450px;
-  padding: 20px;
+  height: fit-content;
   background-color: #222831;
-  border-radius: 15px;
+  border-radius: 10px;
   border: 1px solid #eee;
-  box-shadow: 2px 2px 5px #00adb5;
+  box-shadow: 0 0.125rem 0.25rem #00adb5;
+}
+
+#post-card-link > h1 {
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
 }
 
 .post-title {
@@ -53,6 +56,9 @@
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  background-color: #222831;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .post-highlight {
