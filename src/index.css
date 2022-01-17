@@ -2,10 +2,24 @@
   margin: 0;
   padding: 0;
   font-size: 16px;
+  font-family: 'KoHo', sans-serif;
 }
 
 html {
   background-color: #393e46;
+}
+
+h1 {
+  font-family: 'Abril Fatface', cursive;
+}
+
+h3 {
+  font-style: italic;
+  font-family: 'Exo 2', sans-serif;
+}
+
+.btn {
+  font-family: 'Roboto', sans-serif;
 }
 
 #root {

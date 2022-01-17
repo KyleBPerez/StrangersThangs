@@ -11,7 +11,10 @@ export default function Home({ userAuthToken, username }) {
         </h1>
       ) : (
         <h1 className='display-4 text-light text-center p-5'>
-          Welcome Back <span className='display-4 text-info '>{username}</span>{' '}
+          Welcome Back{' '}
+          <span id='logged-in-name' className='display-4 text-info '>
+            {username}
+          </span>{' '}
           to Stranger's Things
         </h1>
       )}

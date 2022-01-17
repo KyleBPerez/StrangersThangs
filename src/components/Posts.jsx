@@ -58,7 +58,7 @@ export default function Posts({ posts, setPosts, ogPosts, setOgPosts }) {
                       to={`${post._id}`}
                       style={{ textDecoration: 'none', color: 'white' }}
                     >
-                      <h1 className='post-title card-header bg-secondary pb-3 '>
+                      <h1 className='post-title card-header bg-secondary pb-3 text-center'>
                         {post.title}
                       </h1>
                       <Container className='card-body'>
@@ -68,11 +68,13 @@ export default function Posts({ posts, setPosts, ogPosts, setOgPosts }) {
                             {post.location}
                           </span>
                         </h3>
-                        <h4 className='post-price'>
+                        <h3 className='post-price'>
                           Price:{' '}
                           <span className='post-highlight'>{post.price}</span>
-                        </h4>
-                        <p className='post-description'>{post.description}</p>
+                        </h3>
+                        <p className='post-description text-center'>
+                          {post.description}
+                        </p>
                         <p>
                           {post.willDeliver
                             ? `I'll come to you!`
