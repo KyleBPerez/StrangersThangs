@@ -30,7 +30,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-    if (localStorage.getItem('userAuthToken')) {
+    if (localStorage.getItem('token')) {
       setUserAuthToken(localStorage.getItem('token'))
     }
   }, [])

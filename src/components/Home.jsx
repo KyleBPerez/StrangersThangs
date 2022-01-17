@@ -7,7 +7,7 @@ export default function Home({ userAuthToken, username }) {
     <Container className='d-flex p-sm-5 flex-column w-100 align-items-center bg-dark rounded-pill mt-5 gap-2 border border-light shadow-lg'>
       {!userAuthToken ? (
         <h1 className='display-4 text-light text-center p-5'>
-          Welcome to Strager's Things
+          Welcome to Stranger's Things
         </h1>
       ) : (
         <h1 className='display-4 text-light text-center p-5'>
