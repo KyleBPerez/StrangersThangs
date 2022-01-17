@@ -27,7 +27,7 @@ export default function Posts({ posts, setPosts, ogPosts, setOgPosts }) {
       <div className='posts-container w-100'>
         <section className='search-bar flex-column'>
           <h1 className='display-4 text-center bg-dark text-light p-3 mb-0'>
-            Check all our goods!
+            Browse all our goods!
           </h1>
           <InputGroup className='input-group-lg  w-100'>
             <InputGroup.Text className='text-dark ' id='search-posts-form'>
