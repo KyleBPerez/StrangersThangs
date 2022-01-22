@@ -62,6 +62,8 @@ export default function CreatePost({
     navigate('/profile')
   }
 
+  console.log('hello world')
+
   const priceHandler = (e) => {
     const regx = /[0-9\b\W]+$/
 
